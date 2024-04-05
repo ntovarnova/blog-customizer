@@ -13,7 +13,16 @@ const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
 
 const App = () => {
+	const [articleState, setArticleState] = useState(defaultArticleState);
 	const [formState, setFormState] = useState(defaultArticleState);
+	const resetFormState = () => {
+		setFormState(defaultArticleState);
+		setArticleState(defaultArticleState);
+	};
+
+	const applyState = () => {
+		setArticleState(formState);
+	};
 
 	return (
 		<div
@@ -30,6 +39,8 @@ const App = () => {
 			<ArticleParamsForm
 			state={formState}
 			setState={setFormState}
+			resetStyles={resetFormState}
+			applyStyles={applyState}
 			/>
 			<Article />
 		</div>

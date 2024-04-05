@@ -1,18 +1,18 @@
 import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 import { Text } from '../text';
-//import { Select } from '../select';
+import { Select } from '../select';
 import { useState, useRef, FormEvent } from 'react';
-//import { RadioGroup } from '../radio-group';
+import { RadioGroup } from '../radio-group';
 //import { Separator } from '../separator';
 import {
 	OptionType,
 	//backgroundColors,
 	//contentWidthArr,
 	defaultArticleState,
-	//fontSizeOptions,
+	fontSizeOptions,
 	//fontColors,
-	//fontFamilyOptions,
+	fontFamilyOptions,
 } from 'src/constants/articleProps';
 
 import clsx from 'clsx';
@@ -22,15 +22,15 @@ import styles from './ArticleParamsForm.module.scss';
 type ArticleParamsFormProps = {
 	state: typeof defaultArticleState;
 	setState: React.Dispatch<React.SetStateAction<typeof defaultArticleState>>;
-	//resetStyles: () => void;
-	//applyStyles: () => void;
+	resetStyles: () => void;
+	applyStyles: () => void;
 };
 
 export const ArticleParamsForm = ({
 	state,
 	setState,
-	//resetStyles,
-	//applyStyles,
+	resetStyles,
+	applyStyles,
 }: ArticleParamsFormProps) => {
 	const [isOpen, setOpen] = useState(false);
 	const formRef = useRef<HTMLFormElement | null>(null);
@@ -71,9 +71,24 @@ export const ArticleParamsForm = ({
 					<Text as={'h2'} size={31} weight={800} uppercase={true}>
 						Задайте параметры
 					</Text>
+					<Select
+						selected={state.fontFamilyOption}
+						options={fontFamilyOptions}
+						placeholder='Выберите шрифт'
+						title='шрифт'
+						onChange={handleChangeFontFamily}
+					/>
+					<RadioGroup
+						name='fontSize'
+						options={fontSizeOptions}
+						selected={state.fontSizeOption}
+						title='размер шрифта'
+						onChange={handleChangeFontSize}
+					/>
+
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' />
-						<Button title='Применить' type='submit'/>
+						<Button title='Применить' type='submit' />
 					</div>
 				</form>
 			</aside>
