@@ -14,7 +14,7 @@ import {
 	fontColors,
 	fontFamilyOptions,
 } from 'src/constants/articleProps';
-
+import { useCloseForm } from './hooks/useCloseForm';
 import clsx from 'clsx';
 
 import styles from './ArticleParamsForm.module.scss';
@@ -56,6 +56,12 @@ export const ArticleParamsForm = ({
 	const handleChangeContentWidth = (value: OptionType) => {
 		setState({ ...state, contentWidth: value });
 	};
+
+	useCloseForm({
+		isOpen: isOpen,
+		onClose: toggleOpen,
+		rootRef: formRef,
+	});
 
 	return (
 		<>
@@ -108,8 +114,8 @@ export const ArticleParamsForm = ({
 						onChange={handleChangeContentWidth}
 					/>
 					<div className={styles.bottomContainer}>
-						<Button title='Сбросить' type='reset' />
-						<Button title='Применить' type='submit' />
+						<Button title='Сбросить' type='reset'onClick={resetStyles} />
+						<Button title='Применить' type='submit' onClick={applyStyles}/>
 					</div>
 				</form>
 			</aside>
