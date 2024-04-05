@@ -4,14 +4,14 @@ import { Text } from '../text';
 import { Select } from '../select';
 import { useState, useRef, FormEvent } from 'react';
 import { RadioGroup } from '../radio-group';
-//import { Separator } from '../separator';
+import { Separator } from '../separator';
 import {
 	OptionType,
-	//backgroundColors,
-	//contentWidthArr,
+	backgroundColors,
+	contentWidthArr,
 	defaultArticleState,
 	fontSizeOptions,
-	//fontColors,
+	fontColors,
 	fontFamilyOptions,
 } from 'src/constants/articleProps';
 
@@ -85,7 +85,28 @@ export const ArticleParamsForm = ({
 						title='размер шрифта'
 						onChange={handleChangeFontSize}
 					/>
-
+					<Select
+						selected={state.fontColor}
+						options={fontColors}
+						placeholder='Выберите цвет'
+						title='цвет шрифта'
+						onChange={handleChangeFontColor}
+					/>
+					<Separator />
+					<Select
+						selected={state.backgroundColor}
+						options={backgroundColors}
+						placeholder='Выберите цвет'
+						title='Цвет фона'
+						onChange={handleChangeBackgroundColor}
+					/>
+					<Select
+						selected={state.contentWidth}
+						options={contentWidthArr}
+						placeholder='Выберите ширину'
+						title='ширина контента'
+						onChange={handleChangeContentWidth}
+					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' />
 						<Button title='Применить' type='submit' />
