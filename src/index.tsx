@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { StrictMode, CSSProperties,useState } from 'react';
+import { StrictMode, CSSProperties, useState } from 'react';
 import clsx from 'clsx';
 
 import { Article } from './components/article/Article';
@@ -14,15 +14,6 @@ const root = createRoot(domNode);
 
 const App = () => {
 	const [articleState, setArticleState] = useState(defaultArticleState);
-	const [formState, setFormState] = useState(defaultArticleState);
-	const resetFormState = () => {
-		setFormState(defaultArticleState);
-		setArticleState(defaultArticleState);
-	};
-
-	const applyState = () => {
-		setArticleState(formState);
-	};
 
 	return (
 		<div
@@ -37,10 +28,8 @@ const App = () => {
 				} as CSSProperties
 			}>
 			<ArticleParamsForm
-			state={formState}
-			setState={setFormState}
-			resetStyles={resetFormState}
-			applyStyles={applyState}
+				articleState={articleState}
+				setArticleState={setArticleState}
 			/>
 			<Article />
 		</div>
