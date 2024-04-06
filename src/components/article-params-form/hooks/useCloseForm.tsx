@@ -23,8 +23,10 @@ export const useCloseForm = ({ isOpen, onClose, rootRef }: UseCloseForm) => {
 			}
 		};
 
-		window.addEventListener('keydown', handleEsc);
-		window.addEventListener('mousedown', handleClick);
+		if (isOpen) {
+			window.addEventListener('keydown', handleEsc);
+			window.addEventListener('mousedown', handleClick);
+		}
 
 		return () => {
 			window.removeEventListener('keydown', handleEsc);
