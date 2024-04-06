@@ -2,7 +2,7 @@ import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 import { Text } from '../text';
 import { Select } from '../select';
-import { useState, useRef, FormEvent, SyntheticEvent } from 'react';
+import { useState, useRef, SyntheticEvent } from 'react';
 import { RadioGroup } from '../radio-group';
 import { Separator } from '../separator';
 import {
